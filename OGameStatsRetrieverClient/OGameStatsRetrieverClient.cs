@@ -60,6 +60,11 @@ namespace OGameStatsRetriever.Data
             return await GetResourceAsync<ServerData>($"serverData.xml");
         }
 
+        public async Task<Localization> GetLocalizationAsync()
+        {
+            return await GetResourceAsync<Localization>("localization.xml");
+        }
+
         public async Task<IEnumerable<PlayerBrowseInfo>> GetPlayersAsync()
         {
             return await GetResourceAsync<Players, List<PlayerBrowseInfo>>("players.xml", "Player");
@@ -70,19 +75,14 @@ namespace OGameStatsRetriever.Data
             return await GetResourceAsync<Universe, List<Planet>>("universe.xml", "Planet");
         }
 
-        public async Task<PlayerData> GetPlayerDataAsync(int playerId)
-        {
-            return await GetResourceAsync<PlayerData>($"playerData.xml?id={playerId}");
-        }
-
-        public async Task<Localization> GetLocalizationAsync()
-        {
-            return await GetResourceAsync<Localization>("localization.xml");
-        }
-
         public async Task<IEnumerable<UniversesListUniverse>> GetUniversesAsync()
         {
             return await GetResourceAsync<Universes, List<UniversesListUniverse>>("universes.xml", "Universe");
+        }
+
+        public async Task<PlayerData> GetPlayerDataAsync(int playerId)
+        {
+            return await GetResourceAsync<PlayerData>($"playerData.xml?id={playerId}");
         }
 
         public async Task<IEnumerable<PlayerScore>> GetPlayerHighScoresAsync(HighScoreType highScoreType)
