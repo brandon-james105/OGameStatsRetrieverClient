@@ -41,7 +41,7 @@ namespace OGameStatsRetriever.Data
 
         private async Task<TChild> GetResourceAsync<TParent, TChild>(string uri, string childPropertyName)
         {
-            dynamic resource = await PrepareResourceAsync<TParent>(uri);
+            object resource = await PrepareResourceAsync<TParent>(uri);
             return (TChild)resource.GetType().GetProperty(childPropertyName).GetValue(resource, null);
         }
 
