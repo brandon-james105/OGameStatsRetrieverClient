@@ -1,7 +1,9 @@
-﻿using OGameStatsRetrieverClient.Models;
+﻿using OGameStatsRetrieverClient.Exceptions;
+using OGameStatsRetrieverClient.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Xml2CSharp;
@@ -35,8 +37,33 @@ namespace OGameStatsRetriever.Data
             var result = await client.GetAsync(uri);
             var resultContentStream = await result.Content.ReadAsStreamAsync();
             var serializer = new XmlSerializer(typeof(T));
-            var resource = serializer.Deserialize(resultContentStream);
-            return (T)resource;
+            T resource;
+            try
+            {
+                resource = (T)serializer.Deserialize(resultContentStream);
+            }
+            catch (Exception ex)
+            {
+                var resultText = await result.Content.ReadAsStringAsync();
+
+                if (result.Content.Headers.ContentType != MediaTypeHeaderValue.Parse("application/xml"))
+                {
+                    if (resultText.Contains("Player not found."))
+                    {
+                        ex = new PlayerNotFoundException();
+                    }
+                    if (resultText.Contains("Parameters \"category\" and \"type\" must be set."))
+                    {
+                        ex = new HighscoreParametersInvalidException();
+                    }
+                }
+                else
+                {
+                    ex = new ServerNotFoundException();
+                }
+                throw ex;
+            }
+            return resource;
         }
 
         private async Task<TChild> GetResourceAsync<TParent, TChild>(string uri, string childPropertyName)
