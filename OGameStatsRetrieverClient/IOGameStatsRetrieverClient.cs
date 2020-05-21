@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xml2CSharp;
 
-namespace OGameStatsRetriever
+namespace OGameStatsRetrieverClient
 {
     public interface IOGameStatsRetrieverClient
     {
@@ -80,5 +80,11 @@ namespace OGameStatsRetriever
         /// </summary
         /// <returns>A list of universes.</returns>
         Task<IEnumerable<UniversesListUniverse>> GetUniversesAsync();
+
+        /// <summary>
+        /// Retrieves list of servers from a different source than the rest of the data endpoints https://lobby.ogame.gameforge.com/api/servers. Server data includes multipliers.
+        /// </summary>
+        /// <returns>A list of server data</returns>
+        Task<IEnumerable<Server>> GetServersAsync();
     }
 }

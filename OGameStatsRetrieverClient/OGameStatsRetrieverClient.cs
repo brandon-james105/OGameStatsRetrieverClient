@@ -1,4 +1,5 @@
-﻿using OGameStatsRetrieverClient.Exceptions;
+﻿using Newtonsoft.Json;
+using OGameStatsRetrieverClient.Exceptions;
 using OGameStatsRetrieverClient.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Xml2CSharp;
 
-namespace OGameStatsRetriever.Data
+namespace OGameStatsRetrieverClient
 {
     public class OGameStatsRetrieverClient : IOGameStatsRetrieverClient
     {
@@ -120,6 +121,19 @@ namespace OGameStatsRetriever.Data
         public async Task<IEnumerable<AllianceScore>> GetAllianceHighScoresAsync(HighScoreType highScoreType)
         {
             return await GetResourceAsync<AllianceHighscore, List<AllianceScore>>($"highscore.xml?category={(int)HighScoreCategory.Alliance}&type={(int)highScoreType}", "Alliance");
+        }
+
+        public async Task<IEnumerable<Server>> GetServersAsync()
+        {
+            var client = new HttpClient
+            {
+                BaseAddress = new Uri("https://lobby.ogame.gameforge.com/api/servers")
+            };
+
+            var serversResponseMessage = await client.GetAsync("");
+            var serversData = JsonConvert.DeserializeObject<IEnumerable<Server>>(await serversResponseMessage.Content.ReadAsStringAsync());
+
+            return serversData;
         }
     }
 }

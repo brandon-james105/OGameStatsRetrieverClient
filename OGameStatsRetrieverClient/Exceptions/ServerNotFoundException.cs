@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OGameStatsRetrieverClient.Exceptions
 {
-    public class ServerNotFoundException: Exception
+    public class ServerNotFoundException : Exception
     {
     }
 }
