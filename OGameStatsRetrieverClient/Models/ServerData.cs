@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace OGameStatsRetrieverClient.Models
+namespace OGameStatsRetriever.Models
 {
     [XmlRoot(ElementName = "serverData")]
     public class ServerData

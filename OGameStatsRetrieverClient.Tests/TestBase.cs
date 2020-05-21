@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace OGameStatsRetrieverClient.Tests
+namespace OGameStatsRetriever.Tests
 {
     public class TestBase
     {

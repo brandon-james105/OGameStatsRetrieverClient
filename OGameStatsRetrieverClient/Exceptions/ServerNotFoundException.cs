@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OGameStatsRetrieverClient.Exceptions
+namespace OGameStatsRetriever.Exceptions
 {
     public class ServerNotFoundException : Exception
     {

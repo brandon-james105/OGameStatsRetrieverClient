@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using OGameStatsRetrieverClient.Exceptions;
-using OGameStatsRetrieverClient.Models;
+using OGameStatsRetriever.Exceptions;
+using OGameStatsRetriever.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Xml2CSharp;
 
-namespace OGameStatsRetrieverClient
+namespace OGameStatsRetriever
 {
     public class OGameStatsRetrieverClient : IOGameStatsRetrieverClient
     {

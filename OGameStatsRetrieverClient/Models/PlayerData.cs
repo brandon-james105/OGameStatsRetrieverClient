@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace OGameStatsRetrieverClient.Models
+namespace OGameStatsRetriever.Models
 {
     [XmlRoot(ElementName = "position")]
     public class Position

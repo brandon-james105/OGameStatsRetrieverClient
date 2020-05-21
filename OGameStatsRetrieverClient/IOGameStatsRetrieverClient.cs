@@ -1,9 +1,9 @@
-﻿using OGameStatsRetrieverClient.Models;
+﻿using OGameStatsRetriever.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xml2CSharp;
 
-namespace OGameStatsRetrieverClient
+namespace OGameStatsRetriever
 {
     public interface IOGameStatsRetrieverClient
     {

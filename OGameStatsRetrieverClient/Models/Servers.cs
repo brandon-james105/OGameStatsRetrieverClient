@@ -5,7 +5,7 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace OGameStatsRetrieverClient.Models
+namespace OGameStatsRetriever.Models
 {
     public partial class Server
     {
