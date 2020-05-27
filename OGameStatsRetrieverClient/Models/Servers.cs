@@ -85,9 +85,9 @@ namespace OGameStatsRetriever.Models
         public long DebrisFieldFactorDefence { get; set; }
     }
 
-    public enum ServerCategory { Balanced, Fleeter, Miner };
+    public enum ServerCategory { Balanced, Fleeter, Miner, Graveyard };
 
-    public enum ServerLabel { Empty, New };
+    public enum ServerLabel { Empty, New, Graveyard };
 
     internal static class Converter
     {
@@ -120,6 +120,8 @@ namespace OGameStatsRetriever.Models
                     return ServerCategory.Fleeter;
                 case "miner":
                     return ServerCategory.Miner;
+                case "graveyard":
+                    return ServerCategory.Graveyard;
             }
             throw new Exception("Cannot unmarshal type ServerCategory");
         }
@@ -143,6 +145,9 @@ namespace OGameStatsRetriever.Models
                 case ServerCategory.Miner:
                     serializer.Serialize(writer, "miner");
                     return;
+                case ServerCategory.Graveyard:
+                    serializer.Serialize(writer, "graveyard");
+                    return;
             }
             throw new Exception("Cannot marshal type ServerCategory");
         }
@@ -164,6 +169,8 @@ namespace OGameStatsRetriever.Models
                     return ServerLabel.Empty;
                 case "new":
                     return ServerLabel.New;
+                case "graveyard":
+                    return ServerLabel.Graveyard;
             }
             throw new Exception("Cannot unmarshal type ServerLabel");
         }
@@ -183,6 +190,9 @@ namespace OGameStatsRetriever.Models
                     return;
                 case ServerLabel.New:
                     serializer.Serialize(writer, "new");
+                    return;
+                case ServerLabel.Graveyard:
+                    serializer.Serialize(writer, "graveyard");
                     return;
             }
             throw new Exception("Cannot marshal type ServerLabel");

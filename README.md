@@ -2,7 +2,7 @@
 Client to get public data from GameForge's OGame
 
 # Usage and API
-The library includes an inteface, `IOGameStatsRetrieverClient` in case you wish to do something custom to your responses in your application.
+The library includes an interface, `IOGameStatsRetrieverClient` in case you wish to do something custom to your responses in your application.
 
 ## Usage
 
@@ -16,8 +16,6 @@ await client.GetAlliancesAsync();
 ## API
 
 The IOGameStatsRetrieverClient retrieves alliance data, high scores, players, universes, servers, and localization data.
-
-### Alliances
 
 Alliance High Scores
 
